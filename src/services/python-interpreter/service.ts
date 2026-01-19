@@ -152,6 +152,8 @@ export class PyodidePythonEnvironment implements PythonEnvironment {
         var files: any[] = [];
         var entries = this.pyodide?.FS.readdir(dir);
 
+        if (!entries) return files;
+
         for (var i = 0; i < entries.length; i++) {
             var entry = entries[i];
             if (entry === '.' || entry === '..') {
